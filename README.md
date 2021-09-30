@@ -1,0 +1,2 @@
+# R5T.T0057
+DuplicateValuesOperator, IgnoredValuesOperator, and other value-related operator extension method bases.

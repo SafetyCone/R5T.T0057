@@ -10,13 +10,22 @@ namespace System
 {
     public static class IIgnoredValuesOperatorExtensions
     {
-        public static HashSet<string> GetIgnoredValues(this IIgnoredValuesOperator _,
+        public static HashSet<string> LoadIgnoredValues(this IIgnoredValuesOperator _,
             string ignoredValuesTextFilePath)
         {
             var values = FileHelper.ReadAllLinesSynchronous(ignoredValuesTextFilePath);
 
             var output = new HashSet<string>(values);
             return output;
+        }
+
+        public static void SaveIgnoredValues(this IIgnoredValuesOperator _,
+            string ignoredValuesTextFilePath,
+            IEnumerable<string> ignoredValues)
+        {
+            FileHelper.WriteAllLinesSynchronous(
+                ignoredValuesTextFilePath,
+                ignoredValues);
         }
     }
 }

@@ -11,7 +11,10 @@ namespace System
 {
     public static class IDuplicateValuesOperatorExtensions
     {
-        public static Dictionary<string, string> GetDuplicateValueSelections(this IDuplicateValuesOperator _,
+        /// <summary>
+        /// Gets a dictionary of values from the {Key}| {Value} format.
+        /// </summary>
+        public static Dictionary<string, string> LoadDuplicateValueSelections(this IDuplicateValuesOperator _,
             string duplicateValueSelectionsTextFilePath)
         {
             var lines = FileHelper.ReadAllLinesSynchronous(duplicateValueSelectionsTextFilePath);
@@ -24,6 +27,17 @@ namespace System
                     xTokens => xTokens[1].Trim());
 
             return output;
+        }
+
+        public static void SaveDuplicateValueSelections(this IDuplicateValuesOperator _,
+            string duplicateValueSelectionsTextFilePath,
+            Dictionary<string, string> duplicateValueSelections)
+        {
+            var lines = duplicateValueSelections
+                .Select(xPair => $"{xPair.Key}| {xPair.Value}")
+                ;
+
+            FileHelper.WriteAllLinesSynchronous(duplicateValueSelectionsTextFilePath, lines);
         }
     }
 }

@@ -6,6 +6,8 @@ using R5T.Magyar.IO;
 
 using R5T.T0057;
 
+using Instances = R5T.T0057.X002.Instances;
+
 
 namespace System
 {
@@ -21,6 +23,7 @@ namespace System
 
             // Assumes {Key}| {Value} format.
             var output = lines
+                .Where(Instances.StringOperator.IsNotEmpty)
                 .Select(xLine => xLine.Split(Characters.Pipe))
                 .ToDictionary(
                     xTokens => xTokens[0].Trim(),

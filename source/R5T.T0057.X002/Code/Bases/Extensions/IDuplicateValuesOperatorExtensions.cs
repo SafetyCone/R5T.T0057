@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+using R5T.Magyar;
+
 using R5T.T0057;
 
 using Instances = R5T.T0057.X002.Instances;

@@ -72,7 +72,7 @@ namespace System
                 .Select(xPair => $"{xPair.Key}| {xPair.Value}")
                 ;
 
-            FileHelper.WriteAllLinesSynchronous(duplicateValueSelectionsTextFilePath, lines);
+            FileHelper.WriteAllLines_Synchronous(duplicateValueSelectionsTextFilePath, lines);
         }
     }
 }
